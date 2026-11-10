@@ -58,25 +58,25 @@ void printCSV(const char *data, size_t size)
 
 DataFrame *loadCSV(char *data, size_t size)
 {
-    DataFrame *df = (DataFrame *)malloc(sizeof(DataFrame));
-    int field_l = 0;
-    for (size_t i = 0; i < size; i++)
-    {
-        if (data[i] == ',')
-        {
-            field_l = 0;
+    // DataFrame *df = (DataFrame *)malloc(sizeof(DataFrame));
+    // int field_l = 0;
+    // for (size_t i = 0; i < size; i++)
+    // {
+    //     if (data[i] == ',')
+    //     {
+    //         field_l = 0;
 
-            continue;
-        }
-        if (data[i] == '\n')
-        {
-            df->ROW_SIZE++;
-            field_l = 0;
-            continue;
-        }
-        field_l++;
-    }
-    return df;
+    //         continue;
+    //     }
+    //     if (data[i] == '\n')
+    //     {
+    //         df->ROW_SIZE++;
+    //         field_l = 0;
+    //         continue;
+    //     }
+    //     field_l++;
+    // }
+    // return df;
 }
 
 int main()
