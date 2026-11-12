@@ -9,31 +9,31 @@ typedef enum
     COL_STRING
 } DataType;
 
-union data
+typedef union
 {
-    double *ndouble;
-    char *nstring;
-};
+    int i;
+    double d;
+    char *s;
+} CellValue;
 
-typedef union data data;
+typedef struct Data
+{
+    CellValue *values;
+} Data;
 
-struct Column
+typedef struct Column
 {
     char *name;
     DataType type;
-    data *data;
-};
+    Data data;
+} Column;
 
-typedef struct Column Column;
-
-struct DataFrame
+typedef struct DataFrame
 {
-    size_t COL_SIZE;
-    size_t ROW_SIZE;
-    Column *columns;
-};
-
-typedef struct DataFrame DataFrame;
+    size_t ROWSIZE;
+    size_t COLSIZE;
+    Column **columns;
+} DataFrame;
 
 void printCSV(const char *data, size_t size)
 {
@@ -56,27 +56,8 @@ void printCSV(const char *data, size_t size)
     printf(" |\n");
 }
 
-DataFrame *loadCSV(char *data, size_t size)
+DataFrame *initDF(char *data, size_t len)
 {
-    // DataFrame *df = (DataFrame *)malloc(sizeof(DataFrame));
-    // int field_l = 0;
-    // for (size_t i = 0; i < size; i++)
-    // {
-    //     if (data[i] == ',')
-    //     {
-    //         field_l = 0;
-
-    //         continue;
-    //     }
-    //     if (data[i] == '\n')
-    //     {
-    //         df->ROW_SIZE++;
-    //         field_l = 0;
-    //         continue;
-    //     }
-    //     field_l++;
-    // }
-    // return df;
 }
 
 int main()
